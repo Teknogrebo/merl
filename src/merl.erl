@@ -44,7 +44,7 @@
 %% while a flat string or binary represents source code containing newlines.
 -type text() :: string() | binary() | [string()] | [binary()].
 
--type location() :: erl_scan:location().
+-type location() :: erl_anno:location().
 
 
 %% ------------------------------------------------------------------------
@@ -428,7 +428,7 @@ meta_template_1(Leaf) ->
 
 meta_template_2(Var, V) when is_atom(Var) ->
     case atom_to_list(Var) of
-        [C|_]=Name when C >= $A, C =< $Z ; C >= $À, C =< $Þ, C /= $× ->
+        [C|_]=Name when C >= $A, C =< $Z ; C >= $Ã€, C =< $Ãž, C /= $Ã— ->
             case lists:reverse(Name) of
                 "@"++([_|_]=RevRealName) ->  % don't allow empty RealName
                     RealName = lists:reverse(RevRealName),
